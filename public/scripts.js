@@ -1,4 +1,5 @@
-//  jQuery DOMReady callback function to ensure that the DOM is ready and available
+// PLAIN jQUERY
+// jQuery DOMReady callback function to ensure that the DOM is ready and available
 $(function() {
   $("#add").click(function(e) {
     e.preventDefault();
@@ -41,3 +42,16 @@ function updateList(contact) {
 function clearForm() {
 
 };
+
+//===============================================
+// Migrating to Backbone
+
+const AddForm = Backbone.View.extend({
+  render: function() {
+    const rawTemplate = $("#add-form-template").html();
+    const compiledTemplate = _.template(rawTemplate);
+    const renderedTemplate = compiledTemplate();
+    this.$el.html(renderedTemplate);
+    return this;
+  }
+});
