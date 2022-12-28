@@ -1,20 +1,24 @@
 // PLAIN jQUERY
 // jQuery DOMReady callback function to ensure that the DOM is ready and available
 $(function() {
-  $("#add").click(function(e) {
-    e.preventDefault();
+  // $("#add").click(function(e) {
+  //   e.preventDefault();
     showAddForm();
-  });
+  // });
 });
 
 // find the #add-edit-form element and show it using an animation
 function showAddForm() {
-  const form = $("#add-edit-form");
-  form.slideDown();
+  const addForm = new AddForm();
+  addForm.render();
+  
+  $("#main").html(addForm.$el);
+//   const form = $("#add-edit-form");
+//   form.slideDown();
 };
 
 // event handler for the click event of a save button
-$("#save").click(function(e)) {
+$("#save").click(function(e) {
   const formData = {
     name: $("#name").val(),
     photo: $("#photo").val(),
@@ -33,7 +37,7 @@ $("#save").click(function(e)) {
       clearForm();
     }
   });
-};
+});
 
 function updateList(contact) {
 
